@@ -2,7 +2,7 @@
     "name": "chernegasergiy/nk-025-2021-parser",
     "description": "A PHP library to parse the NK-025-2021 medical classifications from meddata.pp.ua.",
     "type": "library",
-    "license": "MIT",
+    "license": "LicenseRef-CSSM-Unlimited-2.0",
     "authors": [
         {
             "name": "Serhii Cherneha",

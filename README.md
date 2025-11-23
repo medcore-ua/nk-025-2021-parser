@@ -16,6 +16,10 @@ composer require chernegasergiy/nk-025-2021-parser
 
 ## Usage
 
+The `parse()` method returns a `ClassificationCollection` object which you can iterate over, or use the finder methods to search for specific classifications.
+
+### Basic Usage
+
 ```php
 <?php
 
@@ -26,10 +30,50 @@ use ChernegaSergiy\Nk0252021Parser\Parser;
 $parser = new Parser();
 
 try {
-    $data = $parser->parse();
-    print_r($data);
+    $classifications = $parser->parse();
+
+    // Iterate over all classifications
+    foreach ($classifications as $classification) {
+        echo $classification->nameUa . PHP_EOL;
+    }
+
+    // Get the total count
+    echo "Total classifications: " . count($classifications) . PHP_EOL;
+
 } catch (Exception $e) {
     echo 'Error: ' . $e->getMessage();
+}
+```
+
+### Finding a Classification
+
+You can find a classification by its code or specific code.
+
+```php
+<?php
+
+// ...
+
+$cholera = $parser->findByCode('A00');
+echo $cholera->nameUa; // Холера
+
+$choleraBiotar = $parser->findBySpecificCode('A00.0');
+echo $choleraBiotar->nameUa; // Холера, спричинена холерним вібріоном 01, biovar cholera
+```
+
+### Searching for Classifications
+
+You can search for classifications by name (in either Ukrainian or English).
+
+```php
+<?php
+
+// ...
+
+$results = $parser->searchByName('тиф');
+
+foreach ($results as $result) {
+    echo $result->specificCode . ': ' . $result->specificNameUa . PHP_EOL;
 }
 ```
 

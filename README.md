@@ -25,7 +25,7 @@ The `parse()` method returns a `ClassificationCollection` object which you can i
 
 require 'vendor/autoload.php';
 
-use ChernegaSergiy\Nk0252021Parser\Parser;
+use MedCore\Nk0252021Parser\Parser;
 
 $parser = new Parser();
 

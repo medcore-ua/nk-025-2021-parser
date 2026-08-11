@@ -79,6 +79,21 @@ foreach ($results as $result) {
 }
 ```
 
+## Data Structure
+
+Each `Classification` object contains:
+
+- `class` — class (e.g., "I")
+- `chapter` — chapter (e.g., "I. Certain infectious and parasitic diseases")
+- `code_range` — code range (e.g., "A00-A09")
+- `sub_category` — sub category (e.g., "Intestinal infectious diseases")
+- `code` — code (e.g., "A00")
+- `name_en` — English name (e.g., "Cholera")
+- `name_ua` — Ukrainian name (e.g., "Холера")
+- `specific_code` — specific code (e.g., "A00.0")
+- `specific_name_en` — specific English name (e.g., "Cholera due to vibrio cholerae 01, biovar cholera")
+- `specific_name_ua` — specific Ukrainian name (e.g., "Холера, спричинена холерним вібріоном 01, biovar cholera")
+
 ## Contributing
 
 Contributions are welcome and appreciated! Here's how you can contribute:

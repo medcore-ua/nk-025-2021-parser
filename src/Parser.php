@@ -15,9 +15,9 @@ class Parser
      * Fetches and parses the NK-025-2021 data.
      *
      * @return ClassificationCollection The parsed data as a collection of Classification objects.
-     * @throws \Exception If the data cannot be fetched or parsed.
+     * @throws \Exception               If the data cannot be fetched or parsed.
      */
-    public function parse(): ClassificationCollection
+    public function parse() : ClassificationCollection
     {
         if ($this->collection) {
             return $this->collection;
@@ -25,13 +25,13 @@ class Parser
 
         $json = @file_get_contents(self::DATA_URL);
 
-        if ($json === false) {
+        if (false === $json) {
             throw new \Exception("Failed to fetch data from " . self::DATA_URL);
         }
 
         $data = json_decode($json, true);
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if (JSON_ERROR_NONE !== json_last_error()) {
             throw new \Exception("Failed to parse JSON: " . json_last_error_msg());
         }
 
@@ -55,17 +55,17 @@ class Parser
         return $this->collection;
     }
 
-    public function findByCode(string $code): ?Classification
+    public function findByCode(string $code) : ?Classification
     {
         return $this->parse()->findByCode($code);
     }
 
-    public function findBySpecificCode(string $specificCode): ?Classification
+    public function findBySpecificCode(string $specificCode) : ?Classification
     {
         return $this->parse()->findBySpecificCode($specificCode);
     }
 
-    public function searchByName(string $query): ClassificationCollection
+    public function searchByName(string $query) : ClassificationCollection
     {
         return $this->parse()->searchByName($query);
     }

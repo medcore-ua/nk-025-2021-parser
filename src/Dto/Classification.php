@@ -15,6 +15,5 @@ class Classification
         public readonly string $specific_code,
         public readonly string $specific_name_en,
         public readonly string $specific_name_ua,
-    ) {
-    }
+    ) {}
 }

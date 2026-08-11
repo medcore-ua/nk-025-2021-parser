@@ -12,22 +12,22 @@ class ClassificationCollection implements IteratorAggregate, Countable
      */
     private array $classifications = [];
 
-    public function add(Classification $classification): void
+    public function add(Classification $classification) : void
     {
         $this->classifications[] = $classification;
     }
 
-    public function getIterator(): \ArrayIterator
+    public function getIterator() : \ArrayIterator
     {
         return new \ArrayIterator($this->classifications);
     }
 
-    public function count(): int
+    public function count() : int
     {
         return count($this->classifications);
     }
 
-    public function findByCode(string $code): ?Classification
+    public function findByCode(string $code) : ?Classification
     {
         foreach ($this->classifications as $classification) {
             if ($classification->code === $code) {
@@ -38,7 +38,7 @@ class ClassificationCollection implements IteratorAggregate, Countable
         return null;
     }
 
-    public function findBySpecificCode(string $specificCode): ?Classification
+    public function findBySpecificCode(string $specificCode) : ?Classification
     {
         foreach ($this->classifications as $classification) {
             if ($classification->specific_code === $specificCode) {
@@ -48,16 +48,16 @@ class ClassificationCollection implements IteratorAggregate, Countable
 
         return null;
     }
-    
-    public function searchByName(string $query): ClassificationCollection
+
+    public function searchByName(string $query) : ClassificationCollection
     {
         $results = new self();
         foreach ($this->classifications as $classification) {
             if (
-                stripos($classification->name_ua, $query) !== false ||
-                stripos($classification->name_en, $query) !== false ||
-                stripos($classification->specific_name_ua, $query) !== false ||
-                stripos($classification->specific_name_en, $query) !== false
+                false !== stripos($classification->name_ua, $query) ||
+                false !== stripos($classification->name_en, $query) ||
+                false !== stripos($classification->specific_name_ua, $query) ||
+                false !== stripos($classification->specific_name_en, $query)
             ) {
                 $results->add($classification);
             }
